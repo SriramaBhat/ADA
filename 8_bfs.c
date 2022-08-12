@@ -23,6 +23,7 @@ void bfs(int graph[][MAX], int visited[], int n, int start){
                 cyclic = 1;
             if((graph[start][i]) && (visited[i] == 0)){
                 queue[++rear] = i;
+                parent[rear] = start;
                 visited[i] = 1;
                 count++;
             }
