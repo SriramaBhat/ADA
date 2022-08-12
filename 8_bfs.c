@@ -1,7 +1,4 @@
-/**************************************************************************************************
- * Program to use Breadth-first-search (BFS) to check if the given graph is connected.
- * The graph is given as adjacency matrix.
-**************************************************************************************************/
+//BFS to check connectivity and acyclicity
 
 #include<stdio.h>
 #include<stdlib.h>
