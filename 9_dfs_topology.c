@@ -1,50 +1,36 @@
-//DFS for topological sorting
+//Topological DFS
 #include<stdio.h>
 #include<stdlib.h>
 #define MAX 100
-int count = 0, top = -1;
-int stack[MAX];
+int graph[MAX][MAX], visited[MAX], count=0;
+int stack[MAX], top=-1;
 
-void dfs(int graph[][MAX], int visited[], int n, int start);
-void topologicalSort(int graph[][MAX], int visited[], int n);
+void dfs(int n, int start) {
+    visited[start] = 1;
+    for(int i=0; i<n; i++)
+        if(graph[start][i] && visited[i]==0)
+            dfs(n, i);
+    stack[++top] = start;
+}
 
 void main() {
-    int n, graph[MAX][MAX], visited[MAX], i, j;
-    printf("\nEnter the number of nodes in the graph:\n");
+    int n;
+    printf("\nEnter the number of vertices:\n");
     scanf("%d", &n);
     printf("\nEnter the adjacency matrix:\n");
-    for(i=0; i<n; i++){
-        for(j=0; j<n; j++){
+    for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++) 
             scanf("%d", &graph[i][j]);
-        }
         visited[i] = 0;
     }
-
-    printf("\nThe topological order is:\n");
-    topologicalSort(graph, visited, n);  
-    for(i=n-1; i>=0; i--){
-        printf(" =>%c", stack[i] + 65);
+    
+    printf("\nTopological Order:\n");
+    for(int i=0; i<n; i++) {
+        if(visited[i] == 0)
+            dfs(n, i);
     }
-}
-
-void topologicalSort(int graph[][MAX], int visited[], int n) {
-    int i;
-    for(i=0; i<n; i++){
-        if(visited[i] == 0){
-            dfs(graph, visited, n, i);
-        }
+    
+    for(int i=n-1; i>=0; i--) {
+        printf(" --> %c", stack[i]+65);
     }
-    return;
-}
-
-void dfs(int graph[][MAX], int visited[], int n, int start) {
-    int i;
-    visited[start] = 1;
-    for(i=0; i<n; i++){
-        if(graph[start][i] && visited[i] == 0) {
-            dfs(graph, visited, n, i);
-        }
-    }
-    stack[++top] = start;
-    return;
 }
