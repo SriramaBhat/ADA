@@ -3,7 +3,7 @@
 #include<stdlib.h>
 #define MAX 100
 int graph[MAX][MAX], visited[MAX], isCyclic = 0;
-int dfsCount = 0, count = 0, opCount = 0;
+int dfsCount = 0, count = 0;
 
 void dfs(int n, int start, int parent) {
     visited[start] = 1;
