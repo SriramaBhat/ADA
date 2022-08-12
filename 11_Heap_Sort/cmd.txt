@@ -1,0 +1,7 @@
+set title "Heap Sort"
+set xrange [0:100]
+set yrange [0:1000]
+set xlabel "Input Size"
+set ylabel "Operation Count"
+set style data line
+plot "Best_Case.txt" using 1:2 title "Best Case", "Avg_Case.txt" using 1:2 title "Average Case", "Worst_Case.txt" using 1:2 title "Worst Case"
