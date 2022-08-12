@@ -1,0 +1,7 @@
+set title "Selection Sort"
+set xrange [0:100]
+set yrange [0:10000]
+set xlabel "Input Size"
+set ylabel "Operation Count"
+set style data line
+plot "Count.txt" using 1:2 title "Basic Count"
